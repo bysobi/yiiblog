@@ -7,13 +7,10 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'components' => [
-        'urlManager' => [
-          'showScriptName' => false,
-          'enablePrettyUrl' => true
-                  ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'rqNGEPidiFeyu7lEXSOwdeHSI4u4Xefx',
+            'baseUrl' => '',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -42,8 +39,23 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
+        'urlManager' => [
+            'showScriptName' => false,
+            'enablePrettyUrl' => true,
+            'rules' => [
+                '' => 'site/index',
+                'login' => 'site/login',
+                'about' => 'site/about',
+                'contact' => 'site/contact',
+            ],
+        ],
+        'assetManager' => [
+            'basePath' => '@webroot/assets',
+            'baseUrl' => '@web/assets'
+        ],
     ],
     'params' => $params,
+
 ];
 
 if (YII_ENV_DEV) {
