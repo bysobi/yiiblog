@@ -45,8 +45,9 @@ $config = [
             'rules' => [
                 '' => 'site/index',
                 'login' => 'site/login',
-                'about' => 'site/about',
+                'articles' => 'site/articles',
                 'contact' => 'site/contact',
+                'dropmenu' => 'site/dropmenu',
             ],
         ],
         'assetManager' => [

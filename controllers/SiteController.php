@@ -89,8 +89,14 @@ class SiteController extends Controller
         }
     }
 
-    public function actionAbout()
+    public function actionArticles()
     {
-        return $this->render('about');
+        return $this->render('articles');
     }
+
+    public function actionDropmenu()
+    {
+        return $this->render('dropmenu');
+    }
+
 }
