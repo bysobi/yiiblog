@@ -93,10 +93,4 @@ class SiteController extends Controller
     {
         return $this->render('articles');
     }
-
-    public function actionDropmenu()
-    {
-        return $this->render('dropmenu');
-    }
-
 }

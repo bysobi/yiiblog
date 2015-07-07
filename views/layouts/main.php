@@ -39,17 +39,12 @@ AppAsset::register($this);
                     ['label' => 'Articles', 'url' => ['/site/articles']],
                     ['label' => 'Contact', 'url' => ['/site/contact']],
                     [
-                        'label' => 'Menu',
+                        'label' => 'Admin',
                         'items' => [
-                            ['label' => 'Dropmenu', 'url' => ['/site/dropmenu']],
-                            ['label' => 'Dropmenu', 'url' => ['/site/dropmenu']],
-                            ['label' => 'Dropmenu', 'url' => ['/site/dropmenu']],
+                            ['label' => 'Menu', 'url' => ['/admin']],
                             '<li class="divider"></li>',
-                            '<li class="dropdown-header">Dropdown Header</li>',
-                            ['label' => 'Dropmenu', 'url' => ['/site/dropmenu']],
-                            ['label' => 'Dropmenu', 'url' => ['/site/dropmenu']],
-                            ['label' => 'Dropmenu', 'url' => ['/site/dropmenu']],
-                            ['label' => 'Dropmenu', 'url' => ['/site/dropmenu']],
+                            '<li class="dropdown-header">Category</li>',
+                            ['label' => 'Create', 'url' => ['/admin/category']],
                         ],
                     ],
                     Yii::$app->user->isGuest ?
