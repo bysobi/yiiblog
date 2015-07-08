@@ -1,12 +1,17 @@
+<?php 
+$this->title = 'Admin menu';
+$this->params['breadcrumbs'][] = $this->title;
+
+?>
 <div class="admin-default-index">
-    <h1><?= $this->context->action->uniqueId ?></h1>
+    <h1>Welcome to ADMIN MENU</h1>
     <p>
-        This is the view content for action "<?= $this->context->action->id ?>".
-        The action belongs to the controller "<?= get_class($this->context) ?>"
-        in the "<?= $this->context->module->id ?>" module.
+    	You may choose:<br>
     </p>
-    <p>
-        You may customize this page by editing the following file:<br>
-        <code><?= __FILE__ ?></code>
-    </p>
+    	<h4>Categories:</h4>
+    <ul>
+    	<li><a href="/admin/category/index">Show</a></li>
+    	<li><a href="/admin/category/create">Create</a></li>
+    </ul>
+   
 </div>
