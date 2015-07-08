@@ -41,10 +41,11 @@ AppAsset::register($this);
                     [
                         'label' => 'Admin',
                         'items' => [
-                            ['label' => 'Menu', 'url' => ['/admin']],
+                            ['label' => 'Gii', 'url' => ['/gii']],
                             '<li class="divider"></li>',
-                            '<li class="dropdown-header">Category</li>',
-                            ['label' => 'Create', 'url' => ['/admin/category']],
+                            ['label' => 'Admin menu', 'url' => ['/admin']],
+                            '<li class="divider"></li>',
+                            ['label' => 'Categories', 'url' => ['/admin/category']],
                         ],
                     ],
                     Yii::$app->user->isGuest ?
