@@ -36,10 +36,11 @@ AppAsset::register($this);
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => [
                     ['label' => 'Home', 'url' => ['/site/index']],
+                    ['label' => 'Blog', 'url' => ['/blog']],
                     ['label' => 'Articles', 'url' => ['/site/articles']],
                     ['label' => 'Contact', 'url' => ['/site/contact']],
                     [
-                        'label' => 'Admin',
+                        'label' => 'Admin', 'url' => ['/admin'],
                         'items' => [
                             ['label' => 'Gii', 'url' => ['/gii']],
                             '<li class="divider"></li>',

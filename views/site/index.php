@@ -9,6 +9,6 @@ $this->title = 'My Yii Site';
     </div>
 
     <div class="body-content">
-			content
+			<h2>THIS IS MY FIRST SITE!!!!!!!!!!!!!!!!</h2>
     </div>
 </div>
