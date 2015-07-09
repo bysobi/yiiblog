@@ -36,12 +36,21 @@ AppAsset::register($this);
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => [
                     ['label' => 'Home', 'url' => ['/site/index']],
-                    ['label' => 'Blog', 'url' => ['/blog']],
+                    [
+                        'label' => 'Blog', 'url' => ['/blog'],
+                        'items' => [
+                            ['label' => 'Blog', 'url' => ['/blog']],
+                            ['label' => 'Posts', 'url' => ['/blog/post']],
+                        ],
+                    ],
+
                     ['label' => 'Articles', 'url' => ['/site/articles']],
                     ['label' => 'Contact', 'url' => ['/site/contact']],
                     [
                         'label' => 'Admin', 'url' => ['/admin'],
                         'items' => [
+                            ['label' => 'Mysql', 'url' => ['/openserver/phpmyadmin']],
+                            '<li class="divider"></li>',
                             ['label' => 'Gii', 'url' => ['/gii']],
                             '<li class="divider"></li>',
                             ['label' => 'Admin menu', 'url' => ['/admin']],
