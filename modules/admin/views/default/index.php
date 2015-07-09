@@ -13,5 +13,5 @@ $this->params['breadcrumbs'][] = $this->title;
     	<li><a href="/admin/category/index">Show</a></li>
     	<li><a href="/admin/category/create">Create</a></li>
     </ul>
-   
+
 </div>
