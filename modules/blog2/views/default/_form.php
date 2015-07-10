@@ -13,7 +13,7 @@ use dosamigos\ckeditor\CKEditor;
 
 <div class="post-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
     
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
@@ -21,17 +21,16 @@ use dosamigos\ckeditor\CKEditor;
 
     <?= $form->field($model, 'description')->widget(CKEditor::className(),[
         'options' => ['row' => 6],
-        'preset' => 'advansed'
+        'preset' => 'basic'
     ]) ?>
 
     <?= $form->field($model, 'text')->widget(CKEditor::className(),[
         'options' => ['row' => 6],
-        'preset' => 'advansed'
+        'preset' => 'basic'
     ]) ?>
 
-    <?= $form->field($model, 'url_img')->textInput() ?>
+    <?= $form->field($model, 'img')->fileInput() ?>
 
-    
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

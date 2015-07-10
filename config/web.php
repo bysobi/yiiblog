@@ -13,6 +13,9 @@ $config = [
         'admin' => [
             'class' => 'app\modules\admin\AdminModule',
         ],
+        'blog2' => [
+            'class' => 'app\modules\blog2\Module',
+        ],
     ],
     'components' => [
         'request' => [
@@ -55,6 +58,7 @@ $config = [
                 'login' => 'site/login',
                 'articles' => 'site/articles',
                 'contact' => 'site/contact',
+                
             ],
         ],
         'assetManager' => [

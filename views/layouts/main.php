@@ -39,8 +39,8 @@ AppAsset::register($this);
                     [
                         'label' => 'Blog', 'url' => ['/blog'],
                         'items' => [
-                            ['label' => 'Blog', 'url' => ['/blog']],
-                            ['label' => 'Posts', 'url' => ['/blog/post']],
+                            ['label' => 'Blog', 'url' => ['/blog2']],
+                           //['label' => 'Posts', 'url' => ['/blog2/post']],
                         ],
                     ],
 
