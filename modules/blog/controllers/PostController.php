@@ -67,7 +67,7 @@ class PostController extends Controller
             $model->date_create=date('Y-m-d H:i:s');
             $model->save();
 
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,

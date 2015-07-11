@@ -3,11 +3,13 @@
 namespace app\modules\blog2\controllers;
 
 use Yii;
+use app\modules\admin\models\Category;
 use app\modules\blog2\models\Post;
 use app\modules\blog2\models\PostSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\data\Pagination;
 
 /**
  * PostController implements the CRUD actions for Post model.
@@ -32,11 +34,23 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-       $AllPosts = Post::find()->with('category')->all(); //жадная загрузка
+       $modelPosts = Post::find()->orderBy($posts->id)->with([
+        'category' => function($q) {
+            $q->getActive();
+        },
+       ]);
+
+       if($modelPosts){
+        $pages = new Pagination(['totalCount' => $modelPosts->count(), 'pageSize' => 6]);
+        $posts = $modelPosts->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
 
         return $this->render('index', [
-            'posts' => $AllPosts,
+            'posts' => $posts,
+            'pages' => $pages,
         ]);
+        }
     }
 
     /**
@@ -65,7 +79,7 @@ class DefaultController extends Controller
             $model->date_create=date('Y-m-d H:i:s');
             $model->save();
 
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,

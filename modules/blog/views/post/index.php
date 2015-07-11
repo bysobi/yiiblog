@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\blog\models\PostSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -31,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'category.title',
             'title',
-            'url_img',
+            'img',
             'text:ntext',
             'description:ntext',
             'date_create',

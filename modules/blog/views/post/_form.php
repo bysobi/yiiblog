@@ -29,7 +29,7 @@ use dosamigos\ckeditor\CKEditor;
         'preset' => 'advansed'
     ]) ?>
 
-    <?= $form->field($model, 'url_img')->textInput() ?>
+    <?= $form->field($model, 'img')->fileInput() ?>
 
     
     <div class="form-group">

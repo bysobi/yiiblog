@@ -19,7 +19,7 @@ class PostSearch extends Post
     {
         return [
             [['id', 'category_id',], 'integer'],
-            [['title', 'text', 'description', 'url_img','date_create'], 'safe'],
+            [['title', 'text', 'description', 'img','date_create'], 'safe'],
         ];
     }
 

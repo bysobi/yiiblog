@@ -3,7 +3,6 @@
 namespace app\modules\blog\models;
 
 use app\modules\admin\models\Category;
-
 use Yii;
 
 /**
@@ -32,7 +31,7 @@ class Post extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'description', 'category_id'], 'required'],
-            [['text', 'description', 'url_img','date_create'], 'string'],
+            [['text', 'description', 'img','date_create'], 'string'],
             [['category_id'], 'integer'],
             [['title'], 'string', 'max' => 255],
             
@@ -48,7 +47,7 @@ class Post extends \yii\db\ActiveRecord
             'id' => 'ID',
             'title' => 'Название',
             'text' => 'Текст',
-            'url_img' => 'Изображение',
+            'img' => 'Изображение',
             'description' => 'Краткое описание',
             'category_id' => 'Категория',
             'category.title' => 'Категория',
@@ -60,5 +59,4 @@ class Post extends \yii\db\ActiveRecord
     {
        return $this->hasOne (Category::className(),['id'=>'category_id']);
     }
-
 }

@@ -25,11 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="row">
 <?php foreach ($posts as $item): ?>
-  <div class="col-sm-6 col-md-4">
+   <div class="col-sm-6 col-md-4"> 
     <div class="thumbnail">
-      <img src="http://s3.dotua.org/fsua_items/cover/00/38/48/2/00384801.jpg" alt="<?= $item->title ?>">
+    <?= ($item->img) ? Html::img($item->img, ['class'=>'img-thumbnail', 'alt'=> $item->title]) : '' ?>
       <div class="caption">
-        <h3><a style="text-align:center;!important" href="<?=Url::to(['view', 'id' => $item->id])?>"><?= $item->title ?></a></h3>
+        <h3><a href="<?=Url::to(['view', 'id' => $item->id])?>"><?= $item->title ?></a></h3>
         <p><?= $item->description ?></p>
         <p><a href="<?=Url::to(['view', 'id' => $item->id])?>" class="btn btn-primary" role="button">Read</a><div class="alert alert-warning" role="alert"><?= $item->date_create ?></div></p>
         <p><?= $item->category->title ?></p>
@@ -38,4 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
   </div>
 <?php endforeach ?>
 </div>
+<?= \yii\widgets\LinkPager::widget([
+  'pagination' => $pages,
+]); ?>
 </div>
