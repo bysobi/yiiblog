@@ -12,9 +12,14 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'title')->textInput() ?>
 
-    <?= $form->field($model, 'category_status')->dropDownList(['active' => 'Active', 'inactive' => 'Inactive'],['prompt' => 'Select status']); ?>
+    <?= $form->field($model, 'category_status')->dropDownList([
+    'active' => 'Active', 'inactive' => 'Inactive'
+    ],
+    [
+    'prompt' => 'Select ...','style' => 'width:120px'
+    ]); ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

@@ -47,7 +47,7 @@ class Category extends \yii\db\ActiveRecord
             'id' => 'ID',
             'title' => 'Title',
            // 'status' => 'Status category',
-            'category_status' => 'Category Status',
+            'category_status' => 'Category status',
         ];
     }
 
