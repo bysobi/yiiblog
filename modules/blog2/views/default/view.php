@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="panel panel-default">
         <div class="panel-heading"><?= $model->title ?></div>
         <div class="panel-body">
-            <?= ($model->img) ? Html::img($model->img, ['class'=>'img-thumbnail', 'alt'=> $$model->title]) : ''  ?>
+            <?= ($model->img) ? Html::img($model->img, ['class'=>'img-thumbnail', 'alt'=> $model->title]) : ''  ?>
             <?= $model->text ?>
             <div class="alert alert-warning" role="alert"><?= $model->date_create ?></div>
         </div>

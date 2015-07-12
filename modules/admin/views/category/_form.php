@@ -14,10 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-
-    
-    <?= $form->field($model, 'status')->checkBox(); ?>
-
+    <?= $form->field($model, 'category_status')->dropDownList(['active' => 'Active', 'inactive' => 'Inactive'],['prompt' => 'Select status']); ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

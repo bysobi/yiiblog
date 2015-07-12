@@ -13,8 +13,8 @@ use yii\db\ActiveQuery;
  */
 class Category extends \yii\db\ActiveRecord
 {
-    const STATUS_ACTIVE = 1;
-    const STATUS_UNACTIVE = 0;
+    const STATUS_ACTIVE = 'active';
+    const STATUS_INACTIVE = 'inactive';
 
     /**
      * @inheritdoc
@@ -31,9 +31,9 @@ class Category extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title'], 'required'],
-            [['title'], 'string', 'max' => 255],
-            [['status'],'boolean']
+            [['title','category_status'], 'required'],
+            [['title','category_status'], 'string', 'max' => 255],
+           // [['status'],'boolean'],
         ];
     }
 
@@ -46,7 +46,8 @@ class Category extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'title' => 'Title',
-            'status' => 'Статус',
+           // 'status' => 'Status category',
+            'category_status' => 'Category Status',
         ];
     }
 
@@ -64,12 +65,12 @@ class CategoryQuery extends ActiveQuery
 {
     public function getActive()
     {
-        return $this->andWhere(['status' => Category::STATUS_ACTIVE]);
+        return $this->andWhere(['category_status' => Category::STATUS_ACTIVE]);
     }
 
-    public function getUnActive()
+    public function getInactive()
     {
-        return $this->andWhere(['status' => Category::STATUS_UNACTIVE]);
+        return $this->andWhere(['category_status' => Category::STATUS_INACTIVE]);
     }
 
 }

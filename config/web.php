@@ -10,6 +10,9 @@ $config = [
         'blog' => [
             'class' => 'app\modules\blog\BlogModule',
         ],
+        'blogs' => [
+            'class' => 'vova07\blogs\Module',
+        ],
         'admin' => [
             'class' => 'app\modules\admin\AdminModule',
         ],
@@ -51,6 +54,7 @@ $config = [
         ],
         'db' => require(__DIR__ . '/db.php'),
         'urlManager' => [
+           // 'class' => 'yii\rbac\DbManager', // Delete this if not use blogS
             'showScriptName' => false,
             'enablePrettyUrl' => true,
             'rules' => [

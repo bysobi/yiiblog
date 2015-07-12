@@ -19,7 +19,7 @@ class CategorySearch extends Category
     {
         return [
             [['id'], 'integer'],
-            [['title'], 'safe'],
+            [['title',/*'status',*/'category_status'], 'safe'],
         ];
     }
 
@@ -59,7 +59,13 @@ class CategorySearch extends Category
             'id' => $this->id,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title]);
+        $query->andFilterWhere([
+            'like', 'title', $this->title
+            ]);
+
+       // $query->andFilterWhere(['like', 'status', $this->status]);
+        
+        $query->andFilterWhere(['=','category_status', $this->category_status]);
 
         return $dataProvider;
     }

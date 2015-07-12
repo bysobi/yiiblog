@@ -25,7 +25,6 @@ use kartik\file\FileInput;
             'allowClear' => true
         ],
         ]); ?>
-    <!-- <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(Category::find()->where(['status'=>1])->all(),'id','title'),['prompt'=> 'Выберите категорию']); ?> --> 
     <?= $form->field($model, 'description')->widget(CKEditor::className(),[
         'options' => ['row' => 6],
         'preset' => 'basic'

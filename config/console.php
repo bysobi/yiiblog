@@ -14,6 +14,7 @@ return [
         'gii' => 'yii\gii\Module',
     ],
     'components' => [
+        
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],

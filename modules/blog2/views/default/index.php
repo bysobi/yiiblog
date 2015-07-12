@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use \yii\helpers\Url;
-
+use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\blog\models\PostSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -22,7 +22,10 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Post', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-
+<?php Pjax::begin(); ?>
+<?= \yii\widgets\LinkPager::widget([
+  'pagination' => $pages,
+]); ?>
 <div class="row">
 <?php foreach ($posts as $item): ?>
    <div class="col-sm-6 col-md-4"> 
@@ -41,4 +44,5 @@ $this->params['breadcrumbs'][] = $this->title;
 <?= \yii\widgets\LinkPager::widget([
   'pagination' => $pages,
 ]); ?>
+<?php Pjax::end(); ?>
 </div>
