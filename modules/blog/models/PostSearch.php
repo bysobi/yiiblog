@@ -19,7 +19,7 @@ class PostSearch extends Post
     {
         return [
             [['id', 'category_id',], 'integer'],
-            [['title', 'text', 'description', 'img','date_create'], 'safe'],
+            [['title', 'text', 'description', 'img'], 'safe'],
         ];
     }
 
@@ -62,8 +62,7 @@ class PostSearch extends Post
 
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'text', $this->text])
-            ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'date_create', $this->date_create]);
+            ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
     }

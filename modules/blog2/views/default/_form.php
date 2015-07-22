@@ -16,7 +16,9 @@ use kartik\file\FileInput;
 <div class="post-form">
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+    
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'category_id')->widget(Select2::className(),[
         'data' => ArrayHelper::map(Category::find()->getActive()->all(),'id','title'),
         'language' => 'en',

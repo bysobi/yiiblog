@@ -24,7 +24,6 @@
         "kartik-v/yii2-widget-fileinput": "@dev",
         "mihaildev/yii2-file-upload": "*",
         "mihaildev/yii2-imagine": "*",
-        "vova07/yii2-start-blogs-module": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

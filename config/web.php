@@ -10,9 +10,6 @@ $config = [
         'blog' => [
             'class' => 'app\modules\blog\BlogModule',
         ],
-        'blogs' => [
-            'class' => 'vova07\blogs\Module',
-        ],
         'admin' => [
             'class' => 'app\modules\admin\AdminModule',
         ],
@@ -20,7 +17,14 @@ $config = [
             'class' => 'app\modules\blog2\Module',
         ],
     ],
+    
     'components' => [
+        'formatter' => [
+            'timeFormat' => 'H:i',
+            'decimalSeparator' => ',',
+            'thousandSeparator' => ' ',
+            
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'rqNGEPidiFeyu7lEXSOwdeHSI4u4Xefx',
@@ -62,6 +66,13 @@ $config = [
                 'login' => 'site/login',
                 'articles' => 'site/articles',
                 'contact' => 'site/contact',
+                //'blog2' => 'blog2/default/index',
+                //'blog2/<id:\d+>' => 'blog2/default/view',
+                '<_m:blog2>/<id:\w+>' => '<_m>/default/view',
+                '<_m:blog2>/page-<page:\d+>' => '<_m>/default/index',
+                '<_m:blog2>' => '<_m>/default/index',
+
+                
                 
             ],
         ],

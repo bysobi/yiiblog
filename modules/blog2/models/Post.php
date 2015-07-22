@@ -5,7 +5,9 @@ namespace app\modules\blog2\models;
 use app\modules\admin\models\Category;
 use Yii;
 use yii\web\UploadedFile;
-
+use yii\behaviors\TimeStampBehavior;
+use yii\db\ActiveRecord;
+use yii\db\Expression;
 /**
  * This is the model class for table "post".
  *
@@ -28,6 +30,18 @@ class Post extends \yii\db\ActiveRecord
         return 'post';
     }
 
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
+                ],
+         ],  
+        ];
+    }
     /**
      * @inheritdoc
      */
@@ -35,12 +49,11 @@ class Post extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'description', 'category_id'], 'required'],
-            [['text', 'description','date_create'], 'string'],
+            [['text', 'description'], 'string'],
             [['title'], 'string', 'max' => 255],
-            
+            [['created_at', 'updated_at'], 'integer'], 
         ];
     }
-
     /**
      * @inheritdoc
      */
@@ -54,7 +67,6 @@ class Post extends \yii\db\ActiveRecord
             'description' => 'Description',
             'category_id' => 'Category',
             'category.title' => 'Category',
-            'date_create' => 'Date create',
 
         ];
     }
@@ -69,7 +81,7 @@ class Post extends \yii\db\ActiveRecord
        return $this->getCategory()->getActive();
     }
 
-    public function beforeSave($insert){
+    public function beforeSave($insert) {
         if($this->isNewRecord){
             $this->string = substr(uniqid('img'), 0, 12);
             $this->image = UploadedFile::getInstance($this,'img');
@@ -91,4 +103,5 @@ class Post extends \yii\db\ActiveRecord
 
     } 
 
+    
 }

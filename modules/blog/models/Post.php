@@ -31,7 +31,7 @@ class Post extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'description', 'category_id'], 'required'],
-            [['text', 'description', 'img','date_create'], 'string'],
+            [['text', 'description', 'img'], 'string'],
             [['category_id'], 'integer'],
             [['title'], 'string', 'max' => 255],
             
@@ -51,7 +51,7 @@ class Post extends \yii\db\ActiveRecord
             'description' => 'Краткое описание',
             'category_id' => 'Категория',
             'category.title' => 'Категория',
-            'date_create' => 'Дата создания',
+
         ];
     }
 

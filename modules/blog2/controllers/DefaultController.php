@@ -34,14 +34,15 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-       $modelPosts = Post::find()->orderBy($posts->id)->with([
+       $modelPosts = Post::find()->orderBy(['created_at' => SORT_DESC])->with([
         'category' => function($q) {
             $q->getActive();
         },
        ]);
 
        if($modelPosts){
-        $pages = new Pagination(['totalCount' => $modelPosts->count(), 'pageSize' => 6]);
+        $pages = new Pagination(['totalCount' => $modelPosts->count(), 'pageSize' => 3]);
+        $pages->pageSizeParam = false;
         $posts = $modelPosts->offset($pages->offset)
             ->limit($pages->limit)
             ->all();
@@ -49,6 +50,7 @@ class DefaultController extends Controller
         return $this->render('index', [
             'posts' => $posts,
             'pages' => $pages,
+
         ]);
         }
     }
@@ -60,8 +62,10 @@ class DefaultController extends Controller
      */
     public function actionView($id)
     {
+        $modelPostPrev = Post::find()->where(['created_at' => SORT_DESC])->orderBy(['created_at' => SORT_DESC]);
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'prev' => $this->findModel1($id),
         ]);
     }
 
@@ -75,8 +79,6 @@ class DefaultController extends Controller
         $model = new Post();
         
         if ($model->load(Yii::$app->request->post())) {
-
-            $model->date_create=date('Y-m-d H:i:s');
             $model->save();
 
             return $this->redirect(['index']);
@@ -127,6 +129,15 @@ class DefaultController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
+    {
+        if (($model = Post::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+    protected function findModel1($id)
     {
         if (($model = Post::findOne($id)) !== null) {
             return $model;
