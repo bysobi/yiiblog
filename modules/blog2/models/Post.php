@@ -76,10 +76,10 @@ class Post extends \yii\db\ActiveRecord
        return $this->hasOne(Category::className(),['id'=>'category_id']);
     }
 
-    public function getActiveCategory() 
+  /*  public function getActiveCategory() 
     {
        return $this->getCategory()->getActive();
-    }
+    }*/
 
     public function beforeSave($insert) {
         if($this->isNewRecord){

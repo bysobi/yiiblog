@@ -56,7 +56,9 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 </div>
 <div class="col-md-3 col-sm-4 pull-right sidebar post-view">
-    123
+    <?php foreach ($modelCategory as $item): ?>
+        <?= $item->title ?></br>
+    <?php endforeach ?>
 </div>
 
 

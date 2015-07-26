@@ -46,7 +46,9 @@ $this->params['breadcrumbs'][] = $this->title;
  <div class="panel panel-default">
         <div class="panel-heading">Categories</div>
         <div class="panel-body">
-          item,item2,item3   
+          <?php foreach ($modelCategory as $item): ?>
+            <?= $item->title ?> <?= $item->id ?></br>
+          <?php endforeach ?>
         </div>
   </div>
 </div>

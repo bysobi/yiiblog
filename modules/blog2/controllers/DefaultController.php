@@ -34,7 +34,8 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-       $modelPosts = Post::find()->orderBy(['created_at' => SORT_DESC])->with([
+        $modelCategory = Category::find()->getActive()->all();
+        $modelPosts = Post::find()->orderBy(['created_at' => SORT_DESC])->with([
         'category' => function($q) {
             $q->getActive();
         },
@@ -50,6 +51,7 @@ class DefaultController extends Controller
         return $this->render('index', [
             'posts' => $posts,
             'pages' => $pages,
+            'modelCategory' => $modelCategory,
 
         ]);
         }
@@ -62,10 +64,10 @@ class DefaultController extends Controller
      */
     public function actionView($id)
     {
-        $modelPostPrev = Post::find()->where(['created_at' => SORT_DESC])->orderBy(['created_at' => SORT_DESC]);
+        $modelCategory = Category::find()->getActive()->all();
         return $this->render('view', [
             'model' => $this->findModel($id),
-            'prev' => $this->findModel1($id),
+            'modelCategory' => $modelCategory,
         ]);
     }
 
@@ -129,15 +131,6 @@ class DefaultController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
-    {
-        if (($model = Post::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-    }
-
-    protected function findModel1($id)
     {
         if (($model = Post::findOne($id)) !== null) {
             return $model;
